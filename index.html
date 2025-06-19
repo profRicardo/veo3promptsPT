@@ -349,20 +349,20 @@
                 <div class="prompt-builder">
                     <div class="form-group">
                         <label for="subject">🎬 Sujeito <i>(Quem ou o quê?)</i></label>
-                        <input type="text" id="subject" placeholder="Ex: Um comboio a vapor feito de vidro">
+                        <input type="text" id="subject" placeholder="Ex: Um comboio a vapor feito de vidro" aria-label="🎬 Sujeito (Quem ou o quê?)">
                     </div>
                     <div class="form-group">
                         <label for="action">🏃 Ação <i>(A fazer o quê?)</i></label>
-                        <input type="text" id="action" placeholder="Ex: a navegar num rio de chocolate derretido">
+                        <input type="text" id="action" placeholder="Ex: a navegar num rio de chocolate derretido" aria-label="🏃 Ação (A fazer o quê?)">
                     </div>
                     <div class="form-group full-width">
                         <label for="context">🌍 Contexto / Cenário <i>(Onde e como?)</i></label>
-                        <input type="text" id="context" placeholder="Ex: numa cidade feita de relógios antigos">
+                        <input type="text" id="context" placeholder="Ex: numa cidade feita de relógios antigos" aria-label="🌍 Contexto / Cenário (Onde e como?)">
                     </div>
 
                     <div class="form-group">
                         <label for="style">🎨 Estilo Visual</label>
-                        <select id="style">
+                        <select id="style" aria-label="🎨 Estilo Visual">
                             <option value="">Nenhum / Realista</option>
                             <option value="cinematic">Cinematográfico (Visual de filme)</option>
                             <option value="in watercolor style">Aquarela (Artístico e suave)</option>
@@ -376,7 +376,7 @@
                     </div>
                      <div class="form-group">
                         <label for="camera-angle" data-tooltip="Define a posição e o enquadramento da câmara.">🎥 Plano da Câmara</label>
-                        <select id="camera-angle">
+                        <select id="camera-angle" aria-label="🎥 Plano da Câmara">
                             <option value="">Padrão</option>
                             <option value="an extreme close-up shot of">Super Close-up (Detalhes extremos)</option>
                             <option value="a close-up shot of">Close-up (Focar em emoções)</option>
@@ -388,7 +388,7 @@
                     </div>
                     <div class="form-group">
                         <label for="camera-movement" data-tooltip="Adiciona movimento à câmara para um maior dinamismo.">🎞️ Movimento da Câmara</label>
-                        <select id="camera-movement">
+                        <select id="camera-movement" aria-label="🎞️ Movimento da Câmara">
                             <option value="">Câmara Estática</option>
                             <option value="panning from left to right">Panorâmica (Move na horizontal)</option>
                             <option value="with a slow zoom-in">Zoom In Lento (Aproxima-se)</option>
@@ -399,20 +399,20 @@
                     </div>
                     <div class="form-group">
                         <label for="lighting">💡 Iluminação</label>
-                        <input type="text" id="lighting" placeholder="Ex: golden hour, néon, luz de velas">
+                        <input type="text" id="lighting" placeholder="Ex: golden hour, néon, luz de velas" aria-label="💡 Iluminação">
                     </div>
                     <div class="form-group">
                         <label for="quality">✨ Detalhes de Qualidade</label>
-                        <input type="text" id="quality" placeholder="Ex: 4K, fotorrealista, grão de filme">
+                        <input type="text" id="quality" placeholder="Ex: 4K, fotorrealista, grão de filme" aria-label="✨ Detalhes de Qualidade">
                     </div>
                     <div class="form-group full-width">
                         <label for="negative_prompt">🚫 Prompt Negativo <i>(O que evitar?)</i></label>
-                        <input type="text" id="negative_prompt" placeholder="Ex: desfocado, texto, marcas de água">
+                        <input type="text" id="negative_prompt" placeholder="Ex: desfocado, texto, marcas de água" aria-label="🚫 Prompt Negativo (O que evitar?)">
                     </div>
                     
                     <div class="generated-prompt-container">
                         <label><strong>Seu Prompt Resultante:</strong></label>
-                        <p id="generated-prompt">Comece a preencher os campos acima...</p>
+                        <p id="generated-prompt" aria-live="polite">Comece a preencher os campos acima...</p>
                     </div>
                     
                     <div class="analyzer-container">
@@ -420,7 +420,7 @@
                         <div class="progress-bar-container">
                             <div class="progress-bar" id="prompt-progress-bar"></div>
                         </div>
-                        <p class="tip" id="analyzer-tip">Preencha os campos para começar a análise.</p>
+                        <p class="tip" id="analyzer-tip" aria-live="polite">Preencha os campos para começar a análise.</p>
                     </div>
 
                     <div class="button-group">
