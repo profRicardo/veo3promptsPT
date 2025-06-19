@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Avançado e Interativo de Prompts para IA de Vídeo</title>
+    <title>Guia de Mestre para Prompts de Vídeo (PT)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -109,11 +109,6 @@
             font-weight: 400;
         }
 
-        .label-instruction {
-            font-size: 0.8rem;
-            font-weight: 400;
-        }
-
         input[type="text"], select {
             width: 100%;
             padding: 0.8rem;
@@ -200,17 +195,15 @@
         .progress-bar {
             width: 0%;
             height: 100%;
-            /* background-color: var(--secondary-color); */ /* Default color removed for class-based styling */
+            background-color: var(--secondary-color);
             border-radius: 20px;
-            transition: width 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease; /* Ensured color transition */
+            transition: width 0.5s ease-in-out, background-color 0.5s ease;
             text-align: right;
             padding-right: 10px;
-            color: white; /* Default text color, will be overridden by JS for specific cases */
+            color: white;
             font-weight: 600;
+            font-size: 0.8rem;
         }
-        .progress-bar-danger { background-color: var(--danger-color); }
-        .progress-bar-warning { background-color: var(--tertiary-color); }
-        .progress-bar-success { background-color: var(--secondary-color); }
         .tip {
             margin-top: 0.75rem;
             font-size: 0.9rem;
@@ -346,7 +339,7 @@
 
     <div class="container">
         <header>
-            <h1>Guia Avançado de Prompts para Vídeo</h1>
+            <h1>Guia de Mestre para Prompts de Vídeo</h1>
             <p>Aprenda a criar prompts de mestre para a IA de geração de vídeo. Construa as suas ideias, analise-as em tempo real e liberte a sua criatividade!</p>
         </header>
 
@@ -355,63 +348,66 @@
                 <h2>Construtor de Prompts Inteligente</h2>
                 <div class="prompt-builder">
                     <div class="form-group">
-                        <label for="subject">🎬 Sujeito <span class="label-instruction">(Quem ou o quê?)</span></label>
-                        <input type="text" id="subject" placeholder="Ex: Um robô melancólico, uma raposa ártica">
+                        <label for="subject">🎬 Sujeito <i>(Quem ou o quê?)</i></label>
+                        <input type="text" id="subject" placeholder="Ex: Um comboio a vapor feito de vidro" aria-label="🎬 Sujeito (Quem ou o quê?)">
                     </div>
                     <div class="form-group">
-                        <label for="action">🏃 Ação <span class="label-instruction">(A fazer o quê?)</span></label>
-                        <input type="text" id="action" placeholder="Ex: a observar a chuva pela janela, a caçar sob a aurora boreal">
+                        <label for="action">🏃 Ação <i>(A fazer o quê?)</i></label>
+                        <input type="text" id="action" placeholder="Ex: a navegar num rio de chocolate derretido" aria-label="🏃 Ação (A fazer o quê?)">
                     </div>
                     <div class="form-group full-width">
-                        <label for="context">🌍 Contexto / Cenário <span class="label-instruction">(Onde e como?)</span></label>
-                        <input type="text" id="context" placeholder="Ex: numa cidade futurista, numa paisagem nevada à noite">
+                        <label for="context">🌍 Contexto / Cenário <i>(Onde e como?)</i></label>
+                        <input type="text" id="context" placeholder="Ex: numa cidade feita de relógios antigos" aria-label="🌍 Contexto / Cenário (Onde e como?)">
                     </div>
 
                     <div class="form-group">
                         <label for="style">🎨 Estilo Visual</label>
-                        <select id="style">
+                        <select id="style" aria-label="🎨 Estilo Visual">
                             <option value="">Nenhum / Realista</option>
-                            <option value="cinematic">Cinematográfico</option>
-                            <option value="in watercolor style">Aquarela</option>
-                            <option value="in anime style">Anime</option>
-                            <option value="in 3D animation style">Animação 3D</option>
-                            <option value="timelapse of">Timelapse</option>
-                            <option value="black and white">Preto e Branco</option>
-                            <option value="in a vintage film style">Filme Vintage</option>
+                            <option value="cinematic">Cinematográfico (Visual de filme)</option>
+                            <option value="in watercolor style">Aquarela (Artístico e suave)</option>
+                            <option value="in anime style">Anime (Animação japonesa)</option>
+                            <option value="in 3D animation style">Animação 3D (Como um filme Pixar)</option>
+                            <option value="timelapse of">Timelapse (Acelerar o tempo)</option>
+                            <option value="in slow motion">Câmara Lenta (Abrandar a ação)</option>
+                            <option value="black and white">Preto e Branco (Clássico, dramático)</option>
+                            <option value="in a vintage film style">Filme Vintage (Grão, cores antigas)</option>
                         </select>
                     </div>
                      <div class="form-group">
-                        <label for="camera-angle" data-tooltip="Define a posição e o enquadramento da câmara." tabindex="0">🎥 Plano da Câmara</label>
-                        <select id="camera-angle">
+                        <label for="camera-angle" data-tooltip="Define a posição e o enquadramento da câmara.">🎥 Plano da Câmara</label>
+                        <select id="camera-angle" aria-label="🎥 Plano da Câmara">
                             <option value="">Padrão</option>
-                            <option value="a close-up shot of">Close-up (Plano Próximo)</option>
-                            <option value="a medium shot of">Medium Shot (Plano Médio)</option>
-                            <option value="a wide shot of">Wide Shot (Plano Aberto)</option>
-                            <option value="an aerial view of">Vista Aérea</option>
-                            <option value="a drone shot of">Plano de Drone</option>
+                            <option value="an extreme close-up shot of">Super Close-up (Detalhes extremos)</option>
+                            <option value="a close-up shot of">Close-up (Focar em emoções)</option>
+                            <option value="a medium shot of">Plano Médio (Da cintura para cima)</option>
+                            <option value="a wide shot of">Plano Aberto (Mostrar o cenário)</option>
+                            <option value="an aerial view of">Vista Aérea (De cima para baixo)</option>
+                            <option value="a drone shot of">Plano de Drone (Segue o sujeito)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="camera-movement" data-tooltip="Adiciona movimento à câmara para um maior dinamismo." tabindex="0">🎞️ Movimento da Câmara</label>
-                        <select id="camera-movement">
+                        <label for="camera-movement" data-tooltip="Adiciona movimento à câmara para um maior dinamismo.">🎞️ Movimento da Câmara</label>
+                        <select id="camera-movement" aria-label="🎞️ Movimento da Câmara">
                             <option value="">Câmara Estática</option>
-                            <option value="panning from left to right">Panorâmica (Esquerda para Direita)</option>
-                            <option value="with a slow zoom-in">Zoom In Lento</option>
-                            <option value="with a dolly shot">Dolly Shot (Travelling)</option>
-                            <option value="tilting up">Tilt Up (Inclinação para cima)</option>
+                            <option value="panning from left to right">Panorâmica (Move na horizontal)</option>
+                            <option value="with a slow zoom-in">Zoom In Lento (Aproxima-se)</option>
+                            <option value="with a slow zoom-out">Zoom Out Lento (Afasta-se)</option>
+                            <option value="with a dolly shot">Dolly Shot (Movimento suave e cinematográfico)</option>
+                            <option value="tilting up">Tilt Up (Move na vertical para cima)</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="lighting">💡 Iluminação</label>
-                        <input type="text" id="lighting" placeholder="Ex: golden hour, iluminação dramática">
+                        <input type="text" id="lighting" placeholder="Ex: golden hour, néon, luz de velas" aria-label="💡 Iluminação">
                     </div>
                     <div class="form-group">
                         <label for="quality">✨ Detalhes de Qualidade</label>
-                        <input type="text" id="quality" placeholder="Ex: 4K, fotorrealista">
+                        <input type="text" id="quality" placeholder="Ex: 4K, fotorrealista, grão de filme" aria-label="✨ Detalhes de Qualidade">
                     </div>
                     <div class="form-group full-width">
-                        <label for="negative_prompt">🚫 Prompt Negativo <span class="label-instruction">(O que evitar?)</span></label>
-                        <input type="text" id="negative_prompt" placeholder="Ex: blurry, text, watermark">
+                        <label for="negative_prompt">🚫 Prompt Negativo <i>(O que evitar?)</i></label>
+                        <input type="text" id="negative_prompt" placeholder="Ex: desfocado, texto, marcas de água" aria-label="🚫 Prompt Negativo (O que evitar?)">
                     </div>
                     
                     <div class="generated-prompt-container">
@@ -448,7 +444,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Análise do Exemplo</h3>
-                <span class="close-btn" id="close-modal-btn" aria-label="Close modal">&times;</span>
+                <span class="close-btn" id="close-modal-btn">&times;</span>
             </div>
             <div class="modal-body">
                 <p id="modal-prompt"></p>
@@ -484,17 +480,23 @@
             const modalAnalysisEl = document.getElementById('modal-analysis');
             const copyrightEl = document.getElementById('copyright');
 
-            // Data for Mixer and Examples
+            // --- DATA ---
             const mixerData = {
-                subjects: ['Um elefante com asas de borboleta', 'Um cavaleiro medieval', 'Um detetive robô', 'Uma rainha feiticeira', 'Um gato astronauta'],
-                actions: ['a andar de skate', 'a pintar uma obra-prima', 'a resolver um mistério', 'a fazer jardinagem na lua', 'a navegar um barco de papel'],
-                contexts: ['numa biblioteca feita de doces', 'durante uma tempestade de néon', 'numa cidade subaquática', 'num festival de música dos anos 70', 'num castelo flutuante'],
-                styles: ['in anime style', 'cinematic', 'in a vintage film style', 'in 3D animation style']
+                subjects: ['Um elefante com asas de borboleta', 'Um cavaleiro medieval a jato', 'Um detetive robô vitoriano', 'Uma rainha feiticeira intergaláctica', 'Um gato astronauta com botas', 'Uma cidade feita de relógios', 'Um polvo chef de cozinha', 'Uma bibliotecária fantasma', 'Uma estátua de jardim que ganhou vida', 'Um rio de lava', 'Uma árvore que dá frutos de cristal', 'Um arranha-céus feito de livros', 'Um dragão de origami', 'Um farol no meio de um deserto'],
+                actions: ['a andar de skate numa autoestrada de arco-íris', 'a pintar uma obra-prima com luz', 'a resolver um mistério holográfico', 'a fazer jardinagem em asteroides', 'a navegar um barco de papel numa tempestade', 'a construir um castelo de areia que chega às nuvens', 'a contar histórias a animais da floresta', 'a organizar livros voadores', 'a fazer malabarismo com planetas em miniatura', 'a reger uma orquestra de robôs', 'a dançar breakdance numa teia de aranha'],
+                contexts: ['numa biblioteca infinita', 'durante uma chuva de meteoros néon', 'numa cidade subaquática abandonada', 'num festival de música cyberpunk', 'num castelo flutuante acima das nuvens', 'numa estação espacial coberta de vegetação', 'dentro de um relógio de cuco gigante', 'numa praia de areia preta com dois sóis', 'numa floresta onde as árvores são de cristal', 'num mercado movimentado em Marte'],
+                styles: ['in anime style', 'cinematic', 'in a vintage film style', 'in 3D animation style', 'in watercolor style', 'black and white', 'in slow motion']
             };
             
+            const curatedMixes = [
+                { subject: 'Uma cidade futurista em miniatura dentro de um globo de neve', action: 'com carros voadores a circular e pessoas pequenas a andar', context: 'a ser abanado suavemente por uma mão gigante, com neve a cair', style: 'cinematic', camera_angle: 'a close-up shot of', camera_movement: 'with a slow zoom-out', lighting: 'luz suave e mágica vinda de dentro do globo', quality: 'fotorrealista, 8K, altamente detalhado', negative_prompt: 'mão desfocada' },
+                { subject: 'Um antigo dragão feito de constelações e poeira estelar', action: 'a voar majestosamente pelo cosmos', context: 'passando por nebulosas vibrantes e galáxias distantes', style: 'in 3D animation style', camera_angle: 'a wide shot of', camera_movement: 'panning from left to right', lighting: 'brilho etéreo do dragão e das nebulosas', quality: 'qualidade épica, cores vívidas', negative_prompt: 'planetas, asteroides' },
+                { subject: 'Um velho relojoeiro', action: 'a dar o toque final num relógio de bolso ornamentado que controla o tempo', context: 'na sua oficina poeirenta e caótica, cheia de engrenagens', style: 'in a vintage film style', camera_angle: 'an extreme close-up shot of', camera_movement: 'with a slow zoom-in', lighting: 'luz quente de uma única lâmpada, sombras profundas', quality: 'foco nítido, grão de filme, nostálgico', negative_prompt: 'moderno, limpo' }
+            ];
+
             const examples = [
                 { 
-                    prompt: { subject: 'Um farol solitário', action: 'a resistir a uma tempestade violenta', context: 'numa costa rochosa à noite', style: 'cinematic', camera_angle: 'a wide shot of', camera_movement: 'with a slow zoom-in', lighting: 'iluminação dramática de relâmpagos', quality: 'hyperrealistic, 8K', negative_prompt: 'calm sea' },
+                    prompt: { subject: 'Um farol solitário', action: 'a resistir a uma tempestade violenta', context: 'numa costa rochosa à noite', style: 'cinematic', camera_angle: 'a wide shot of', camera_movement: 'with a slow zoom-in', lighting: 'iluminação dramática de relâmpagos', quality: 'hyperrealistic, 8K', negative_prompt: 'mar calmo' },
                     analysis: [
                         { part: 'Sujeito', text: 'Define claramente o foco principal da cena.', color: '#4285F4' },
                         { part: 'Ação', text: 'Cria tensão e dinamismo, contando uma história.', color: '#EA4335' },
@@ -511,58 +513,100 @@
                         { part: 'Contexto', text: 'O cenário de fantasia dá liberdade criativa à IA.', color: '#34A853' },
                         { part: 'Câmara', text: 'O plano de drone com panorâmica é perfeito para revelar a escala e a beleza do mercado.', color: '#FBBC05' }
                     ]
+                },
+                { 
+                    prompt: { subject: 'Uma única gota de água', action: 'a cair num lago espelhado', context: 'num ambiente minimalista', style: 'black and white', camera_angle: 'an extreme close-up shot of', camera_movement: '', lighting: 'luz de estúdio focada', quality: 'in slow motion, 4K', negative_prompt: 'color' },
+                    analysis: [
+                        { part: 'Minimalismo', text: 'A simplicidade do sujeito e contexto força o foco no detalhe e na ação.', color: '#4285F4' },
+                        { part: 'Técnica', text: 'A combinação de "preto e branco" com "câmara lenta" cria um enorme impacto dramático.', color: '#EA4335' },
+                        { part: 'Câmara', text: 'O "super close-up" é essencial para captar a textura e o impacto da gota de água.', color: '#FBBC05' },
+                        { part: 'Negativo', text: 'Garante que a estética a preto e branco é respeitada, removendo qualquer cor.', color: '#5f6368' }
+                    ]
+                },
+                 { 
+                    prompt: { subject: 'uma flor de cerejeira', action: 'a desabrochar, da gema à flor completa', context: 'com o Monte Fuji desfocado ao fundo', style: 'timelapse of', camera_angle: 'a close-up shot of', camera_movement: '', lighting: 'transição da luz da manhã para a tarde', quality: 'highly detailed, realistic', negative_prompt: '' },
+                    analysis: [
+                        { part: 'Estilo', text: 'O "timelapse" é o comando principal que dita o formato do vídeo.', color: '#4285F4' },
+                        { part: 'Ação', text: 'A ação "da gema à flor completa" descreve o processo que o timelapse deve capturar.', color: '#EA4335' },
+                        { part: 'Contexto', text: 'Adicionar um fundo icónico ("Monte Fuji") enriquece a cena sem a sobrecarregar.', color: '#34A853' },
+                        { part: 'Iluminação', text: 'Especificar a transição da luz torna o timelapse mais dinâmico e realista.', color: '#FBBC05' }
+                    ]
                 }
             ];
 
-            // Core Functions
+            // --- CORE FUNCTIONS ---
+            
+            const buildPromptString = (promptData) => {
+                let promptParts = [];
+                const { subject, action, context, style, camera_angle, camera_movement, lighting, quality, negative_prompt } = promptData;
+
+                let cameraPart = '';
+                if (camera_angle && camera_movement) {
+                    cameraPart = `${camera_angle}, ${camera_movement}, of`;
+                } else if (camera_angle) {
+                    cameraPart = camera_angle;
+                } else if (camera_movement) {
+                    cameraPart = camera_movement + ' of';
+                }
+                if (cameraPart) promptParts.push(cameraPart.replace(' of,', ','));
+
+                if (style && style.startsWith('timelapse')) {
+                     promptParts.push(style);
+                     if (subject) promptParts.push(subject);
+                } else {
+                    if (subject) promptParts.push(subject);
+                }
+                
+                if (action) promptParts.push(action);
+                if (context) promptParts.push(context);
+                if (lighting) promptParts.push(`with ${lighting} lighting`);
+                
+                if (style && !style.startsWith('timelapse')) {
+                    promptParts.push(style);
+                }
+
+                if (quality) promptParts.push(quality);
+
+                let finalPrompt = promptParts.filter(part => part && part.trim() !== '').join(', ');
+                
+                if (negative_prompt) {
+                    finalPrompt += ` --no ${negative_prompt.replace(/,--no/g, ',')}`;
+                }
+                return finalPrompt;
+            };
+
             const analyzePrompt = () => {
                 let score = 0;
                 let tips = [];
-
+                const weights = { subject: 20, action: 20, context: 20, style: 10, camera_angle: 10, camera_movement: 5, details: 10, negative: 5 };
+                
                 if (inputs.subject.value.trim()) {
-                    score += 20;
+                    score += weights.subject;
                     if (inputs.subject.value.length < 15) tips.push('Tente um sujeito mais descritivo.');
                 } else {
                     tips.push('Adicione um sujeito para começar.');
                 }
 
-                if (inputs.action.value.trim()) score += 20;
-                if (inputs.context.value.trim()) score += 20;
-                if (inputs.style.value) score += 10;
-                if (inputs.camera_angle.value) score += 10;
-                if (inputs.camera_movement.value) score += 5;
-                if (inputs.lighting.value.trim() || inputs.quality.value.trim()) score += 10;
-                if (inputs.negative_prompt.value.trim()) score += 5;
+                if (inputs.action.value.trim()) score += weights.action;
+                if (inputs.context.value.trim()) score += weights.context;
+                if (inputs.style.value) score += weights.style;
+                if (inputs.camera_angle.value) score += weights.camera_angle;
+                if (inputs.camera_movement.value) score += weights.camera_movement;
+                if (inputs.lighting.value.trim() || inputs.quality.value.trim()) score += weights.details;
+                if (inputs.negative_prompt.value.trim()) score += weights.negative;
                 
                 progressBar.style.width = score + '%';
                 progressBar.textContent = score > 10 ? `${score}%` : '';
 
-                const SCORE_THRESHOLD_LOW = 40;
-                const SCORE_THRESHOLD_MEDIUM = 75;
-
-                // Text color constants remain for dynamic text styling
-                const textColorDark = '#202124'; // --text-color
-                const textColorLight = '#FFFFFF';
-
-                // Reset classes to base and then add the specific one
-                progressBar.className = 'progress-bar'; // Base class
-
-                if (score < SCORE_THRESHOLD_LOW) { // Use constant
-                    progressBar.classList.add('progress-bar-danger');
-                    progressBar.style.color = textColorLight;
-                } else if (score < SCORE_THRESHOLD_MEDIUM) { // Use constant
-                    progressBar.classList.add('progress-bar-warning');
-                    progressBar.style.color = textColorDark; // Dark text on yellow
-                } else {
-                    progressBar.classList.add('progress-bar-success');
-                    progressBar.style.color = textColorLight;
-                }
+                if (score < 40) progressBar.style.backgroundColor = '#EA4335';
+                else if (score < 75) progressBar.style.backgroundColor = '#FBBC05';
+                else progressBar.style.backgroundColor = '#34A853';
                 
-                if (tips.length > 0) {
+                if (tips.length > 0 && score < 100) {
                     analyzerTip.textContent = '💡 Dica: ' + tips[0];
                 } else if (score > 0 && score < 100) {
                     analyzerTip.textContent = '👍 Bom começo! Adicione mais detalhes para refinar a sua ideia.';
-                } else if (score === 100) {
+                } else if (score >= 100) {
                     analyzerTip.textContent = '🏆 Excelente! Este é um prompt detalhado e bem estruturado.';
                 } else {
                     analyzerTip.textContent = 'Preencha os campos para começar a análise.';
@@ -570,74 +614,49 @@
             };
             
             const updatePrompt = () => {
-                let promptParts = [];
-                const cameraAngle = inputs.camera_angle.value;
-                const cameraMovement = inputs.camera_movement.value;
-
-                let cameraPart = '';
-                if (cameraAngle && cameraMovement) {
-                    cameraPart = `${cameraAngle}, ${cameraMovement}, of`;
-                } else if (cameraAngle) {
-                    cameraPart = cameraAngle;
-                } else if (cameraMovement) {
-                    cameraPart = cameraMovement + ' of';
+                const currentValues = {};
+                for (const key in inputs) {
+                    currentValues[key] = inputs[key].value;
                 }
-                if (cameraPart) promptParts.push(cameraPart.replace(' of,', ','));
-
-                if (inputs.style.value.startsWith('timelapse')) {
-                     promptParts.push(inputs.style.value);
-                     if (inputs.subject.value) promptParts.push(inputs.subject.value);
-                } else {
-                    if (inputs.subject.value) promptParts.push(inputs.subject.value);
-                }
-                
-                if (inputs.action.value) promptParts.push(inputs.action.value);
-                if (inputs.context.value) promptParts.push(inputs.context.value);
-                if (inputs.lighting.value) promptParts.push(`with ${inputs.lighting.value} lighting`);
-                
-                if (inputs.style.value && !inputs.style.value.startsWith('timelapse')) {
-                    promptParts.push(inputs.style.value);
-                }
-
-                if (inputs.quality.value) promptParts.push(inputs.quality.value);
-
-                let finalPrompt = promptParts.filter(part => part.trim() !== '').join(', ');
-                
-                if (inputs.negative_prompt.value) {
-                    finalPrompt += ` --no ${inputs.negative_prompt.value.replace(/,--no/g, ',')}`;
-                }
-
-                generatedPromptEl.textContent = finalPrompt || 'Comece a preencher os campos acima...';
+                const promptText = buildPromptString(currentValues);
+                generatedPromptEl.textContent = promptText || 'Comece a preencher os campos acima...';
                 analyzePrompt();
             };
             
-            // Event Listeners
+            const populateForm = (promptData) => {
+                for (const key in inputs) {
+                    inputs[key].value = promptData[key] || '';
+                }
+                updatePrompt();
+            };
+
+            // --- EVENT LISTENERS ---
             Object.values(inputs).forEach(input => {
                 input.addEventListener('input', updatePrompt);
                 input.addEventListener('change', updatePrompt);
             });
 
             mixerBtn.addEventListener('click', () => {
-                const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
-                inputs.subject.value = getRandom(mixerData.subjects);
-                inputs.action.value = getRandom(mixerData.actions);
-                inputs.context.value = getRandom(mixerData.contexts);
-                inputs.style.value = getRandom(mixerData.styles);
-                inputs.camera_angle.value = '';
-                inputs.camera_movement.value = '';
-                inputs.lighting.value = '';
-                inputs.quality.value = '';
-                inputs.negative_prompt.value = '';
-                updatePrompt();
+                if (Math.random() < 0.25) { // 25% chance of a spectacular mix
+                    const spectacularPrompt = curatedMixes[Math.floor(Math.random() * curatedMixes.length)];
+                    populateForm(spectacularPrompt);
+                } else { // 75% chance of a random mix
+                    const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+                    const randomPrompt = {
+                        subject: getRandom(mixerData.subjects),
+                        action: getRandom(mixerData.actions),
+                        context: getRandom(mixerData.contexts),
+                        style: getRandom(mixerData.styles),
+                        camera_angle: '', camera_movement: '', lighting: '', quality: '', negative_prompt: ''
+                    };
+                    populateForm(randomPrompt);
+                }
             });
 
             exampleBtn.addEventListener('click', () => {
                 const example = examples[Math.floor(Math.random() * examples.length)];
                 
-                let promptText = [
-                    example.prompt.camera_angle, example.prompt.camera_movement, 'of', example.prompt.subject, example.prompt.action, example.prompt.context, example.prompt.lighting, example.prompt.style, example.prompt.quality
-                ].filter(Boolean).join(', ').replace('of,','');
-
+                const promptText = buildPromptString(example.prompt);
                 modalPromptEl.textContent = promptText;
                 
                 modalAnalysisEl.innerHTML = '';
@@ -668,11 +687,8 @@
             });
 
             clearBtn.addEventListener('click', () => {
-                Object.values(inputs).forEach(input => {
-                    if(input.tagName === 'SELECT') input.selectedIndex = 0;
-                    else input.value = '';
-                });
-                updatePrompt();
+                const emptyPrompt = { subject: '', action: '', context: '', style: '', camera_angle: '', camera_movement: '', lighting: '', quality: '', negative_prompt: ''};
+                populateForm(emptyPrompt);
             });
             
             const setCopyright = () => {
@@ -680,8 +696,8 @@
                 copyrightEl.textContent = `© ${year} Ricardo Carvalho. Todos os direitos reservados.`;
             };
             
-            // Initial calls
-            updatePrompt();
+            // --- INITIALIZATION ---
+            populateForm(examples[0].prompt); // Load the first, most comprehensive example on start
             setCopyright();
         });
     </script>
