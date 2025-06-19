@@ -109,6 +109,11 @@
             font-weight: 400;
         }
 
+        .label-instruction {
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
         input[type="text"], select {
             width: 100%;
             padding: 0.8rem;
@@ -195,14 +200,17 @@
         .progress-bar {
             width: 0%;
             height: 100%;
-            background-color: var(--secondary-color);
+            /* background-color: var(--secondary-color); */ /* Default color removed for class-based styling */
             border-radius: 20px;
-            transition: width 0.5s ease-in-out, background-color 0.5s ease;
+            transition: width 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease; /* Ensured color transition */
             text-align: right;
             padding-right: 10px;
-            color: white;
+            color: white; /* Default text color, will be overridden by JS for specific cases */
             font-weight: 600;
         }
+        .progress-bar-danger { background-color: var(--danger-color); }
+        .progress-bar-warning { background-color: var(--tertiary-color); }
+        .progress-bar-success { background-color: var(--secondary-color); }
         .tip {
             margin-top: 0.75rem;
             font-size: 0.9rem;
@@ -347,15 +355,15 @@
                 <h2>Construtor de Prompts Inteligente</h2>
                 <div class="prompt-builder">
                     <div class="form-group">
-                        <label for="subject">🎬 Sujeito <i>(Quem ou o quê?)</i></label>
+                        <label for="subject">🎬 Sujeito <span class="label-instruction">(Quem ou o quê?)</span></label>
                         <input type="text" id="subject" placeholder="Ex: Um robô melancólico, uma raposa ártica">
                     </div>
                     <div class="form-group">
-                        <label for="action">🏃 Ação <i>(A fazer o quê?)</i></label>
+                        <label for="action">🏃 Ação <span class="label-instruction">(A fazer o quê?)</span></label>
                         <input type="text" id="action" placeholder="Ex: a observar a chuva pela janela, a caçar sob a aurora boreal">
                     </div>
                     <div class="form-group full-width">
-                        <label for="context">🌍 Contexto / Cenário <i>(Onde e como?)</i></label>
+                        <label for="context">🌍 Contexto / Cenário <span class="label-instruction">(Onde e como?)</span></label>
                         <input type="text" id="context" placeholder="Ex: numa cidade futurista, numa paisagem nevada à noite">
                     </div>
 
@@ -373,7 +381,7 @@
                         </select>
                     </div>
                      <div class="form-group">
-                        <label for="camera-angle" data-tooltip="Define a posição e o enquadramento da câmara.">🎥 Plano da Câmara</label>
+                        <label for="camera-angle" data-tooltip="Define a posição e o enquadramento da câmara." tabindex="0">🎥 Plano da Câmara</label>
                         <select id="camera-angle">
                             <option value="">Padrão</option>
                             <option value="a close-up shot of">Close-up (Plano Próximo)</option>
@@ -384,7 +392,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="camera-movement" data-tooltip="Adiciona movimento à câmara para um maior dinamismo.">🎞️ Movimento da Câmara</label>
+                        <label for="camera-movement" data-tooltip="Adiciona movimento à câmara para um maior dinamismo." tabindex="0">🎞️ Movimento da Câmara</label>
                         <select id="camera-movement">
                             <option value="">Câmara Estática</option>
                             <option value="panning from left to right">Panorâmica (Esquerda para Direita)</option>
@@ -402,13 +410,13 @@
                         <input type="text" id="quality" placeholder="Ex: 4K, fotorrealista">
                     </div>
                     <div class="form-group full-width">
-                        <label for="negative_prompt">🚫 Prompt Negativo <i>(O que evitar?)</i></label>
+                        <label for="negative_prompt">🚫 Prompt Negativo <span class="label-instruction">(O que evitar?)</span></label>
                         <input type="text" id="negative_prompt" placeholder="Ex: blurry, text, watermark">
                     </div>
                     
                     <div class="generated-prompt-container">
                         <label><strong>Seu Prompt Resultante:</strong></label>
-                        <p id="generated-prompt">Comece a preencher os campos acima...</p>
+                        <p id="generated-prompt" aria-live="polite">Comece a preencher os campos acima...</p>
                     </div>
                     
                     <div class="analyzer-container">
@@ -416,7 +424,7 @@
                         <div class="progress-bar-container">
                             <div class="progress-bar" id="prompt-progress-bar"></div>
                         </div>
-                        <p class="tip" id="analyzer-tip">Preencha os campos para começar a análise.</p>
+                        <p class="tip" id="analyzer-tip" aria-live="polite">Preencha os campos para começar a análise.</p>
                     </div>
 
                     <div class="button-group">
@@ -440,7 +448,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Análise do Exemplo</h3>
-                <span class="close-btn" id="close-modal-btn">&times;</span>
+                <span class="close-btn" id="close-modal-btn" aria-label="Close modal">&times;</span>
             </div>
             <div class="modal-body">
                 <p id="modal-prompt"></p>
@@ -529,10 +537,26 @@
                 progressBar.style.width = score + '%';
                 progressBar.textContent = score > 10 ? `${score}%` : '';
 
-                // **FIXED CODE HERE** Using hex codes instead of CSS variables
-                if (score < 40) progressBar.style.backgroundColor = '#EA4335';
-                else if (score < 75) progressBar.style.backgroundColor = '#FBBC05';
-                else progressBar.style.backgroundColor = '#34A853';
+                const SCORE_THRESHOLD_LOW = 40;
+                const SCORE_THRESHOLD_MEDIUM = 75;
+
+                // Text color constants remain for dynamic text styling
+                const textColorDark = '#202124'; // --text-color
+                const textColorLight = '#FFFFFF';
+
+                // Reset classes to base and then add the specific one
+                progressBar.className = 'progress-bar'; // Base class
+
+                if (score < SCORE_THRESHOLD_LOW) { // Use constant
+                    progressBar.classList.add('progress-bar-danger');
+                    progressBar.style.color = textColorLight;
+                } else if (score < SCORE_THRESHOLD_MEDIUM) { // Use constant
+                    progressBar.classList.add('progress-bar-warning');
+                    progressBar.style.color = textColorDark; // Dark text on yellow
+                } else {
+                    progressBar.classList.add('progress-bar-success');
+                    progressBar.style.color = textColorLight;
+                }
                 
                 if (tips.length > 0) {
                     analyzerTip.textContent = '💡 Dica: ' + tips[0];
